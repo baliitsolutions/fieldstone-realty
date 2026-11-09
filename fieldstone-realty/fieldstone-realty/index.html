@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fieldstone Realty — Homes for Sale & Local Real Estate Agents</title>
+  <meta name="description" content="Browse homes for sale, work out your monthly payment, and book a viewing with a local agent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Fieldstone Realty, home">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M5 34V17L20 6l15 11v17" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="14" y="21" width="12" height="13" fill="var(--cobalt)"/>
+      </svg>
+      <span>Fieldstone</span>
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span>
+      <span class="bars" aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#listings">Buy</a></li>
+        <li><a href="#calculator">Mortgage calculator</a></li>
+        <li><a href="#sell">Sell</a></li>
+        <li><a href="#agents">Agents</a></li>
+      </ul>
+      <a class="btn btn-cobalt" href="#contact">Talk to an agent</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO + SEARCH ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1>Find the home that fits the life you&nbsp;have.</h1>
+    <p class="lead">Local agents for buying and selling in Harbour City and the surrounding towns. Search what's for sale now, or ask us what's coming next.</p>
+
+    <!-- The search sets the listing filters below and jumps to the results -->
+    <form class="search" data-search role="search" aria-label="Search homes">
+      <div class="s-field">
+        <label for="s-type">Property type</label>
+        <select id="s-type" name="type">
+          <option value="all">Any type</option>
+          <option value="house">House</option>
+          <option value="townhouse">Townhouse</option>
+          <option value="apartment">Apartment</option>
+        </select>
+      </div>
+      <div class="s-field">
+        <label for="s-beds">Bedrooms</label>
+        <select id="s-beds" name="beds">
+          <option value="0">Any</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+          <option value="4">4+</option>
+        </select>
+      </div>
+      <div class="s-field">
+        <label for="s-max">Max price</label>
+        <select id="s-max" name="max">
+          <option value="0">No limit</option>
+          <option value="500000">$500k</option>
+          <option value="750000">$750k</option>
+          <option value="1000000">$1M</option>
+          <option value="1500000">$1.5M</option>
+        </select>
+      </div>
+      <button class="btn btn-cobalt btn-lg" type="submit">Search homes</button>
+    </form>
+  </div>
+
+  <!-- Signature element: a street of homes drawn from the listings -->
+  <div class="skyline" data-skyline aria-hidden="true"></div>
+</section>
+
+<!-- ============ LISTINGS ============ -->
+<section class="section" id="listings">
+  <div class="wrap">
+    <header class="listings-head">
+      <div>
+        <h2>Homes for sale</h2>
+        <p class="result-count" data-count aria-live="polite"></p>
+      </div>
+      <div class="sort">
+        <label for="sort">Sort by</label>
+        <select id="sort" data-sort>
+          <option value="new">Newest</option>
+          <option value="low">Price: low to high</option>
+          <option value="high">Price: high to low</option>
+        </select>
+      </div>
+    </header>
+
+    <ul class="cards" data-cards></ul>
+    <div class="no-results" data-empty hidden>
+      <p>No homes match those filters right now.</p>
+      <button type="button" class="btn btn-line" data-reset>Clear filters</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MORTGAGE CALCULATOR ============ -->
+<section class="section section-tint" id="calculator">
+  <div class="wrap calc-grid">
+    <div>
+      <h2>What would I pay each month?</h2>
+      <p class="lead">A quick estimate of principal and interest. Your lender will confirm the exact figure, including taxes and insurance.</p>
+
+      <form class="calc" data-calc>
+        <div class="c-row">
+          <label for="c-price">Home price</label>
+          <output data-out="price"></output>
+          <input id="c-price" name="price" type="range" min="200000" max="2500000" step="10000" value="750000">
+        </div>
+        <div class="c-row">
+          <label for="c-deposit">Deposit</label>
+          <output data-out="deposit"></output>
+          <input id="c-deposit" name="deposit" type="range" min="5" max="50" step="1" value="20">
+        </div>
+        <div class="c-row">
+          <label for="c-rate">Interest rate</label>
+          <output data-out="rate"></output>
+          <input id="c-rate" name="rate" type="range" min="2" max="10" step="0.05" value="6.25">
+        </div>
+        <fieldset class="c-term">
+          <legend>Loan term</legend>
+          <label><input type="radio" name="term" value="15"><span>15 years</span></label>
+          <label><input type="radio" name="term" value="25"><span>25 years</span></label>
+          <label><input type="radio" name="term" value="30" checked><span>30 years</span></label>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="calc-result" aria-live="polite">
+      <p class="r-label">Estimated monthly payment</p>
+      <p class="r-amount" data-monthly></p>
+      <div class="r-bar" aria-hidden="true"><span class="r-principal" data-bar-principal></span><span class="r-interest" data-bar-interest></span></div>
+      <dl class="r-list">
+        <div><dt><i class="sw sw-p"></i>Loan amount</dt><dd data-loan></dd></div>
+        <div><dt><i class="sw sw-i"></i>Total interest</dt><dd data-interest></dd></div>
+        <div><dt>Deposit</dt><dd data-deposit></dd></div>
+        <div><dt>Total paid over the term</dt><dd data-total></dd></div>
+      </dl>
+      <a class="btn btn-cobalt" href="#contact">Ask about pre-approval</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELL (a real sequence) ============ -->
+<section class="section" id="sell">
+  <div class="wrap">
+    <header class="section-head">
+      <h2>Selling? Here's how it works.</h2>
+      <p>Most of our homes sell within six weeks of listing. You'll have one agent from first visit to handing over the keys.</p>
+    </header>
+    <ol class="steps">
+      <li><h3>Free valuation</h3><p>We visit, look at recent sales nearby, and give you a written price range within two days.</p></li>
+      <li><h3>Prepare and list</h3><p>Professional photos, floor plan and a listing on every major property site.</p></li>
+      <li><h3>Viewings and offers</h3><p>We host the viewings, negotiate every offer, and keep you updated after each one.</p></li>
+      <li><h3>Sold</h3><p>We work with your lawyer through to settlement and hand over the keys.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ AGENTS ============ -->
+<section class="section section-ink" id="agents">
+  <div class="wrap">
+    <header class="section-head">
+      <h2>Your agents</h2>
+      <p>Born, raised, or long settled here. We know which streets flood and which schools have waiting lists.</p>
+    </header>
+    <div class="agents">
+      <figure class="agent">
+        <div class="headshot" data-initials="DO" role="img" aria-label="Photo of Daniel Osei"></div>
+        <figcaption><h3>Daniel Osei</h3><p>Principal agent · Harbour City</p><a href="tel:+15550190100">(555) 019-0100</a></figcaption>
+      </figure>
+      <figure class="agent">
+        <div class="headshot" data-initials="CM" role="img" aria-label="Photo of Clara Moretti"></div>
+        <figcaption><h3>Clara Moretti</h3><p>Apartments &amp; first homes</p><a href="tel:+15550190101">(555) 019-0101</a></figcaption>
+      </figure>
+      <figure class="agent">
+        <div class="headshot" data-initials="SP" role="img" aria-label="Photo of Sam Patel"></div>
+        <figcaption><h3>Sam Patel</h3><p>Family homes · Westbrook &amp; Elm Park</p><a href="tel:+15550190102">(555) 019-0102</a></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Talk to an agent</h2>
+      <p class="lead">Tell us what you're looking for, or ask for a free valuation. We reply within one working day.</p>
+      <dl class="office">
+        <div><dt>Office</dt><dd>14 Quay Street, Harbour City 00000</dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+15550190100">(555) 019-0100</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:hello@example.com">hello@example.com</a></dd></div>
+        <div><dt>Hours</dt><dd>Mon–Fri 9am–6pm · Sat 10am–4pm</dd></div>
+      </dl>
+    </div>
+
+    <form class="contact-form" novalidate data-contact-form>
+      <fieldset class="field">
+        <legend>I'd like to</legend>
+        <div class="chips">
+          <label><input type="radio" name="topic" value="Buy" checked><span>Buy</span></label>
+          <label><input type="radio" name="topic" value="Sell"><span>Sell</span></label>
+          <label><input type="radio" name="topic" value="Free valuation"><span>Get a valuation</span></label>
+        </div>
+      </fieldset>
+      <div class="field-row">
+        <div class="field">
+          <label for="ct-name">Name</label>
+          <input id="ct-name" name="name" type="text" autocomplete="name" required>
+          <p class="error">Enter your name.</p>
+        </div>
+        <div class="field">
+          <label for="ct-phone">Phone</label>
+          <input id="ct-phone" name="phone" type="tel" autocomplete="tel" required>
+          <p class="error">Enter a phone number we can call.</p>
+        </div>
+      </div>
+      <div class="field">
+        <label for="ct-email">Email</label>
+        <input id="ct-email" name="email" type="email" autocomplete="email" required>
+        <p class="error">Enter an email address like name@example.com.</p>
+      </div>
+      <div class="field">
+        <label for="ct-msg">Message <span class="optional">(optional)</span></label>
+        <textarea id="ct-msg" name="message" rows="3" placeholder="Budget, areas you like, or the address you'd like valued"></textarea>
+      </div>
+      <button class="btn btn-cobalt btn-lg" type="submit">Send message</button>
+      <p class="form-success" role="status" hidden>Message sent. An agent will contact you within one working day.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">Fieldstone Realty</p>
+    <p>© <span data-year></span> Fieldstone Realty. Licensed real estate agency. Listings shown are examples.</p>
+    <ul class="footer-links">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Instagram</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Viewing request dialog (opened from a listing card) -->
+<dialog class="viewing" data-viewing aria-labelledby="v-title">
+  <form method="dialog" class="viewing-form" novalidate data-viewing-form>
+    <h3 id="v-title">Request a viewing</h3>
+    <p class="v-home" data-v-home></p>
+    <div class="field">
+      <label for="v-name">Name</label>
+      <input id="v-name" name="name" type="text" autocomplete="name" required>
+      <p class="error">Enter your name.</p>
+    </div>
+    <div class="field">
+      <label for="v-phone">Phone</label>
+      <input id="v-phone" name="phone" type="tel" autocomplete="tel" required>
+      <p class="error">Enter a phone number we can call.</p>
+    </div>
+    <fieldset class="field">
+      <legend>Preferred time</legend>
+      <div class="chips">
+        <label><input type="radio" name="when" value="Weekday" checked><span>Weekday</span></label>
+        <label><input type="radio" name="when" value="Evening"><span>Evening</span></label>
+        <label><input type="radio" name="when" value="Weekend"><span>Weekend</span></label>
+      </div>
+    </fieldset>
+    <p class="form-success" role="status" hidden data-v-success>Request sent. The agent will call you to confirm a time.</p>
+    <div class="v-actions">
+      <button class="btn btn-line" value="cancel" formnovalidate data-v-close>Close</button>
+      <button class="btn btn-cobalt" value="send" data-v-send>Request viewing</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
