@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fieldstone — Documentation</title>
+<style>
+  body { font: 16px/1.65 system-ui, sans-serif; color: #1d1f1c; background: #fbfbfa; margin: 0; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1, h2 { line-height: 1.2; }
+  h2 { margin-top: 2.2em; padding-top: 1em; border-top: 2px solid #1d1f1c; }
+  code, pre { font-family: ui-monospace, Menlo, monospace; font-size: .92em; background: #eef0f5; border-radius: 4px; }
+  code { padding: 2px 6px; }
+  pre { padding: 14px 16px; overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: 8px; border-bottom: 1px solid #e2e3df; vertical-align: top; }
+</style>
+</head>
+<body>
+<main>
+<h1>Fieldstone — Real Estate Agency Landing Page</h1>
+<p>Thank you for your purchase. This guide covers everything you need to put the template online with your own listings. No build tools are required: open <code>index.html</code> in a browser and you're running.</p>
+
+<h2>What's included</h2>
+<table>
+  <tr><th>File</th><th>Purpose</th></tr>
+  <tr><td><code>index.html</code></td><td>The page. All text and sections live here.</td></tr>
+  <tr><td><code>assets/css/style.css</code></td><td>All styling. Colours and fonts are variables at the top.</td></tr>
+  <tr><td><code>assets/js/main.js</code></td><td>Listings, search filters, sorting, house illustrations, mortgage calculator, viewing dialog, form validation.</td></tr>
+  <tr><td><code>assets/img/favicon.svg</code></td><td>Browser tab icon.</td></tr>
+  <tr><td><code>LICENSE.txt</code></td><td>What you may and may not do with the template.</td></tr>
+</table>
+
+<h2>Change colours and fonts</h2>
+<p>Open <code>assets/css/style.css</code> and edit the variables in <code>:root</code>:</p>
+<pre>:root {
+  --ink: #1d1f1c;    /* text, headings, dark section */
+  --cobalt: #2a4fd6; /* buttons, links, front doors in the illustrations */
+  --tint: #eef0f5;   /* tinted sections */
+  --clay: #f1d3c8;   /* warm accent */
+}</pre>
+<p>To change fonts, replace the Google Fonts <code>&lt;link&gt;</code> in <code>index.html</code> and update <code>--font-display</code> and <code>--font-body</code>.</p>
+
+<h2>Add your listings</h2>
+<p>All listings come from <code>LISTINGS</code> at the top of <code>assets/js/main.js</code>. Each one looks like this:</p>
+<pre>{ address: "12 Linden Avenue", area: "Westbrook", price: 865000,
+  type: "house", beds: 4, baths: 2, size: 2140,
+  badge: "New", art: "gabled", sky: "#dfe6f6", body: "#f1d3c8",
+  image: "assets/img/12-linden.jpg" }</pre>
+<ul>
+  <li><code>type</code>: <code>house</code>, <code>townhouse</code> or <code>apartment</code> (used by the search filter).</li>
+  <li><code>badge</code>: a short label such as "New", "Open home Sat" or "Sold". Leave empty (<code>""</code>) for none.</li>
+  <li><code>image</code>: add a photo path to show a real photo. Landscape photos around 1200 × 900 px work best.</li>
+  <li>Without a photo, an illustration is drawn: <code>art</code> chooses the style (<code>gabled</code>, <code>modern</code>, <code>terrace</code>, <code>block</code>, <code>cottage</code>), <code>sky</code> is the background colour and <code>body</code> the wall colour.</li>
+</ul>
+<p>Set <code>CURRENCY</code> and <code>AREA_UNIT</code> (for example <code>"m²"</code>) at the top of the same file. Remember to update the price options in the hero search to match your market.</p>
+
+<h2>Mortgage calculator</h2>
+<p>The default values and limits are on the range inputs in the <code>MORTGAGE CALCULATOR</code> section of <code>index.html</code> (<code>min</code>, <code>max</code>, <code>step</code>, <code>value</code>). The calculator shows principal and interest only; the page text already tells visitors that taxes and insurance are extra.</p>
+
+<h2>Receive viewing requests and messages</h2>
+<p>Both forms validate and show a confirmation, but don't send anything yet. Sign up for a form service such as Formspree, Getform or Netlify Forms and add its URL to the contact form:</p>
+<pre>&lt;form class="contact-form" novalidate data-contact-form
+      action="https://formspree.io/f/your-id" method="POST"&gt;</pre>
+<p>For the viewing dialog, the simplest option is to send the request with the form service's JavaScript example inside the <code>submit</code> handler in <code>main.js</code>, or to replace the "Request a viewing" button with a link to your booking calendar.</p>
+
+<h2>Agent photos</h2>
+<pre>&lt;div class="headshot" data-initials="DO"
+     style="background-image:url('assets/img/daniel.jpg')"
+     role="img" aria-label="Photo of Daniel Osei"&gt;&lt;/div&gt;</pre>
+<p>Square photos around 800 × 800 px work best.</p>
+
+<h2>Before you publish</h2>
+<ul>
+  <li>Replace the example listings, agents, phone numbers and address.</li>
+  <li>Remove "Listings shown are examples." from the footer.</li>
+  <li>Add any licence number or legal text your local real estate rules require.</li>
+</ul>
+
+<h2>Publish</h2>
+<p>Upload the whole folder to any static host: Netlify, Vercel, GitHub Pages, Cloudflare Pages, or the <code>public_html</code> folder of regular web hosting.</p>
+
+<h2>Credits</h2>
+<ul>
+  <li>Fonts: Syne and DM Sans, via Google Fonts (SIL Open Font License).</li>
+  <li>Illustrations and icons: original, included in the template licence.</li>
+</ul>
+</main>
+</body>
+</html>
